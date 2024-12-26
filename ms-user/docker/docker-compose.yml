@@ -1,10 +1,33 @@
-version: '3.1'
+version: '3.8'
 
 services:
 
   rabbitmq:
-    image: "rabbitmq:3.8.6-management"
-    container_name: rabbitmq-ms-user
+    image: "rabbitmq:3.10.5-management"
+    container_name: rabbitmq-user
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: 'rabbitmq'
+      RABBITMQ_DEFAULT_PASS: 'rabbitmq'
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/
     ports:
       - 5672:5672
       - 15672:15672
+
+
+  postgres:
+    image: postgres:15.7
+    restart: unless-stopped
+    container_name: postgresql-15.7
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
