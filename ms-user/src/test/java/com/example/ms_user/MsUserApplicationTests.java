@@ -1,10 +1,10 @@
-package com.finger.user;
+package com.example.ms_user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserApplicationTests {
+class MsUserApplicationTests {
 
 	@Test
 	void contextLoads() {
